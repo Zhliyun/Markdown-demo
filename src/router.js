@@ -1,25 +1,47 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-  ]
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes: [{
+        path: '/markdown',
+        name: 'markdown',
+        component: () => import('@/views/Markdown.vue'),
+        children: [{
+        path: 'test.1',
+        name: 'test.1',
+        component: r => require.ensure([], r(require('@/docs/test.1.md')))
+    },{
+        path: 'test.2',
+        name: 'test.2',
+        component: r => require.ensure([], r(require('@/docs/test.2.md')))
+    },{
+        path: 'test.3',
+        name: 'test.3',
+        component: r => require.ensure([], r(require('@/docs/test.3.md')))
+    },{
+        path: 'test.4',
+        name: 'test.4',
+        component: r => require.ensure([], r(require('@/docs/test.4.md')))
+    },{
+        path: 'test.5',
+        name: 'test.5',
+        component: r => require.ensure([], r(require('@/docs/test.5.md')))
+    },{
+        path: 'test.6',
+        name: 'test.6',
+        component: r => require.ensure([], r(require('@/docs/test.6.md')))
+    },{
+        path: 'test',
+        name: 'test',
+        component: r => require.ensure([], r(require('@/docs/test.md')))
+    },{
+        path: 'test1',
+        name: 'test1',
+        component: r => require.ensure([], r(require('@/docs/test1.md')))
+    }]
+    }]
 })
