@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build",
+		"build": "npm run build:entry & vue-cli-service build",
 		"build:entry": "node ./build/build.js",
 		"dev": "npm run build:entry & vue-cli-service serve"
 	},
